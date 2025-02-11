@@ -55,11 +55,13 @@ while ~isequal(s.h.action, "stop")
     p_obstacles = d.input.obstacles.p(d.input.obstacles.active,:);
     r_obstacles = d.input.obstacles.r(d.input.obstacles.active);
     collision_distance = d.par.robot_radius+r_obstacles;
-    smallest_robot2obstacle_dist = min(abs( vecnorm(d.input.robot.p(1:2) - p_obstacles(:,1:2),2,2) ) - collision_distance);
-    s.sim.error.smallest_robot2obstacle_dist(i) = smallest_robot2obstacle_dist;
-%     if smallest_robot2obstacle_dist < 0
-%         error('collision occured');
-%     end
+    if ~isempty(p_obstacles)
+        smallest_robot2obstacle_dist = min(abs( vecnorm(d.input.robot.p(1:2) - p_obstacles(:,1:2),2,2) ) - collision_distance);
+        s.sim.error.smallest_robot2obstacle_dist(i) = smallest_robot2obstacle_dist;
+    %     if smallest_robot2obstacle_dist < 0
+    %         error('collision occured');
+    %     end
+    end
     
     i = mod(i,nsim)+1;
     
