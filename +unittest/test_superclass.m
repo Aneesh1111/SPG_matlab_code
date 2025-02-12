@@ -2,10 +2,10 @@ classdef test_superclass < matlab.unittest.TestCase
     properties
         d
         s
-        npredict = get_global_par('SPG_NPREDICT');
-        nobstacles = get_global_par('SPG_NOBSTACLES');
-        obstacles = struct('p', zeros(get_global_par('SPG_NOBSTACLES'),2),'v', zeros(get_global_par('SPG_NOBSTACLES'),2),'active', zeros(get_global_par('SPG_NOBSTACLES'),1))
-        nintercept_positions = get_global_par('SPG_NINTERCEPT_POINTS');
+        npredict = 20;
+        nobstacles = 78;
+        obstacles = struct('p', zeros(78,2),'v', zeros(78,2),'active', zeros(78,1))
+        nintercept_positions = 15;
         t
         pose = [0 -4 0];
         v_initial = [0 0 0];
